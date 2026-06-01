@@ -1,649 +1,248 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vida Plena · Psicología · Talleres DBT · CABA</title>
-  <meta name="description" content="Talleres y asesorías de psicología basadas en DBT. Sin jerga clínica, sin juicios. Solo habilidades que funcionan." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --vp-dark: #085041;
-      --vp-main: #1D9E75;
-      --vp-light: #5DCAA5;
-      --vp-mint: #9FE1CB;
-      --vp-cream: #F4F1E8;
-      --vp-text: #2C2C2A;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--vp-text);
-      background: #fff;
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 40px;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(29,158,117,0.12);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .nav-logo-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 300;
-      color: var(--vp-dark);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      color: #555;
-      text-decoration: none;
-      font-weight: 400;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--vp-main); }
-
-    .nav-cta {
-      background: var(--vp-main);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 500 !important;
-    }
-
-    .nav-cta:hover { background: var(--vp-dark); color: #fff !important; }
-
-    /* HERO */
-    .hero {
-      background: var(--vp-cream);
-      padding: 80px 40px 100px;
-      text-align: center;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .logo-text-wrap { text-align: left; }
-
-    .logo-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
-      font-weight: 300;
-      color: var(--vp-dark);
-      line-height: 1;
-    }
-
-    .logo-sub {
-      font-size: 9px;
-      letter-spacing: 3.5px;
-      color: var(--vp-main);
-      margin-top: 5px;
-      font-weight: 400;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--vp-mint);
-      color: var(--vp-dark);
-      font-size: 11px;
-      letter-spacing: 2px;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 28px;
-      font-weight: 500;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(36px, 6vw, 58px);
-      font-weight: 300;
-      color: var(--vp-dark);
-      line-height: 1.15;
-      max-width: 600px;
-      margin: 0 auto 22px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--vp-main);
-    }
-
-    .hero-desc {
-      font-size: 16px;
-      color: #666;
-      max-width: 500px;
-      margin: 0 auto 40px;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .hero-btns {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    /* BUTTONS */
-    .btn-primary {
-      background: var(--vp-main);
-      color: #fff;
-      border: none;
-      padding: 16px 36px;
-      border-radius: 50px;
-      font-size: 15px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-primary:hover { background: var(--vp-dark); transform: translateY(-1px); }
-
-    .btn-wa {
-      background: #25D366;
-      color: #fff;
-      border: none;
-      padding: 16px 28px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .btn-wa:hover { background: #1da851; transform: translateY(-1px); }
-
-    /* SERVICES */
-    .services {
-      padding: 80px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--vp-main);
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 4vw, 38px);
-      font-weight: 300;
-      color: var(--vp-dark);
-      margin-bottom: 14px;
-    }
-
-    .section-desc {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.8;
-      font-weight: 300;
-      max-width: 520px;
-      margin-bottom: 44px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--vp-cream);
-      border-radius: 18px;
-      padding: 30px 24px;
-      border: 1.5px solid transparent;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: var(--vp-light);
-    }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--vp-mint);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      font-size: 20px;
-    }
-
-    .card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 21px;
-      font-weight: 400;
-      color: var(--vp-dark);
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      font-size: 13px;
-      color: #666;
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    .card-tag {
-      display: inline-block;
-      background: var(--vp-mint);
-      color: var(--vp-dark);
-      font-size: 10px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-top: 14px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    .card-link {
-      display: block;
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--vp-main);
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    .card-link:hover { color: var(--vp-dark); }
-
-    /* DIVIDER */
-    .divider {
-      height: 1px;
-      background: var(--vp-mint);
-      opacity: 0.4;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* WHY */
-    .why {
-      background: var(--vp-dark);
-      padding: 80px 40px;
-      text-align: center;
-    }
-
-    .why .section-label { color: var(--vp-mint); }
-
-    .why .section-title { color: #fff; margin-bottom: 52px; }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .pillar {
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      padding: 28px 20px;
-      border: 1px solid rgba(255,255,255,0.1);
-      text-align: left;
-    }
-
-    .pillar-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 300;
-      color: var(--vp-mint);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-
-    .pillar p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    /* TESTIMONIOS */
-    .testimonials-section {
-      background: var(--vp-cream);
-      padding: 80px 40px;
-    }
-
-    .testimonials-section .section-label,
-    .testimonials-section .section-title {
-      text-align: center;
-    }
-
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      max-width: 900px;
-      margin: 36px auto 0;
-    }
-
-    .testimonial {
-      background: #fff;
-      border-radius: 16px;
-      padding: 26px 22px;
-      border: 1px solid var(--vp-mint);
-    }
-
-    .stars { color: var(--vp-main); font-size: 14px; margin-bottom: 12px; }
-
-    .testimonial p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.75;
-      font-style: italic;
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-author {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--vp-dark);
-    }
-
-    /* CTA */
-    .cta {
-      padding: 80px 40px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .cta .section-title { margin-bottom: 14px; }
-
-    .cta-desc {
-      font-size: 15px;
-      color: #666;
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
-
-    .cta-btns {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    /* CONTACT STRIP */
-    .contact-strip {
-      background: var(--vp-mint);
-      padding: 22px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 36px;
-      flex-wrap: wrap;
-    }
-
-    .contact-strip span {
-      font-size: 13px;
-      color: var(--vp-dark);
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--vp-dark);
-      padding: 40px;
-      text-align: center;
-      color: rgba(255,255,255,0.45);
-      font-size: 12px;
-    }
-
-    footer .brand { color: var(--vp-mint); }
-
-    footer a {
-      color: var(--vp-mint);
-      text-decoration: none;
-      opacity: 0.7;
-    }
-
-    footer a:hover { opacity: 1; }
-
-    /* MOBILE */
-    @media (max-width: 640px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 60px 20px 80px; }
-      .services, .cta { padding: 60px 20px; }
-      .why { padding: 60px 20px; }
-      .testimonials-section { padding: 60px 20px; }
-      .contact-strip { gap: 16px; padding: 20px; }
-      footer { padding: 30px 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">
-      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
-        <ellipse cx="20" cy="26" rx="14" ry="20" fill="#1D9E75" opacity="0.85"/>
-        <ellipse cx="32" cy="26" rx="14" ry="20" fill="#085041" opacity="0.75"/>
-        <ellipse cx="26" cy="26" rx="5" ry="7" fill="#9FE1CB" opacity="0.9"/>
-      </svg>
-      <span class="nav-logo-name">vida plena</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#servicios">Sesiones</a></li>
-      <li><a href="#servicios">Talleres</a></li>
-      <li><a href="#nosotros">Sobre mí</a></li>
-      <li><a href="https://calendly.com/vidaplenapsic/45min" target="_blank" class="nav-cta">Agendar</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="logo-area">
-      <svg width="68" height="68" viewBox="0 0 52 52" fill="none">
-        <ellipse cx="20" cy="26" rx="14" ry="20" fill="#1D9E75" opacity="0.85"/>
-        <ellipse cx="32" cy="26" rx="14" ry="20" fill="#085041" opacity="0.75"/>
-        <ellipse cx="26" cy="26" rx="5" ry="7" fill="#9FE1CB" opacity="0.9"/>
-      </svg>
-      <div class="logo-text-wrap">
-        <div class="logo-name">vida<br>plena</div>
-        <div class="logo-sub">PSICOLOGÍA · TALLERES DBT · CABA</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--sage:#4A6741;--sage-light:#7A9E6E;--sage-pale:#C8D9BF;--cream:#F5F0E8;--cream-dark:#EDE6D6;--text:#2A2A22;--muted:#666658;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
+
+.ticker{background:var(--sage);overflow:hidden;height:56px;display:flex;align-items:center;}
+.ticker-inner{display:flex;align-items:center;width:100%;justify-content:center;position:relative;height:100%;}
+.ticker-phrase{position:absolute;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:400;color:#fff;padding:0 60px;opacity:0;transition:opacity 0.7s ease;text-shadow:0 0 18px rgba(255,255,255,0.55),0 1px 3px rgba(0,0,0,0.15);}
+.ticker-phrase.active{opacity:1;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--cream);border-bottom:1px solid rgba(74,103,65,0.12);position:sticky;top:0;z-index:100;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--sage);letter-spacing:0.5px;text-decoration:none;}
+.nav-links{display:flex;gap:8px;align-items:center;}
+.nav-item{position:relative;}
+.nav-link{font-size:13px;color:var(--text);text-decoration:none;font-weight:400;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,color .15s;background:transparent;border:none;font-family:'DM Sans',sans-serif;}
+.nav-link:hover{background:var(--cream-dark);color:var(--sage);}
+.nav-link .chevron{font-size:10px;transition:transform .2s;}
+.nav-item.open .chevron{transform:rotate(180deg);}
+.dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid rgba(74,103,65,0.15);border-radius:14px;padding:8px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,0.08);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;}
+.nav-item.open .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.dropdown a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-radius:8px;font-weight:400;transition:background .15s;}
+.dropdown a:hover{background:var(--cream-dark);color:var(--sage);}
+.nav-btn{background:var(--sage);color:#fff;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background .2s;white-space:nowrap;}
+.nav-btn:hover{background:#3a5232;}
+
+/* STEPS */
+.steps{padding:72px 40px;max-width:900px;margin:0 auto;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
+.sec-title em{font-style:italic;color:var(--sage);}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.step-card{background:var(--sage);border-radius:22px;padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;transition:transform .2s;cursor:pointer;}
+.step-card:hover{transform:translateY(-4px);}
+.step-icon{width:80px;height:80px;margin-bottom:20px;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.2;}
+.step-desc{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.55;font-weight:300;}
+.step-footer{display:flex;justify-content:flex-end;margin-top:20px;}
+.step-arrow{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;transition:background .2s;}
+.step-card:hover .step-arrow{background:rgba(255,255,255,0.28);}
+
+/* SERVICIOS */
+.servicios{background:var(--cream-dark);padding:80px 40px;scroll-margin-top:60px;}
+.servicios-inner{max-width:860px;margin:0 auto;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
+.page-title em{font-style:italic;color:var(--sage);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;}
+.service-card{background:var(--cream);border-radius:20px;padding:28px 22px;transition:transform .2s;}
+.service-card:hover{transform:translateY(-3px);}
+.service-card.dark{background:var(--sage);}
+.service-icon{font-size:26px;margin-bottom:12px;}
+.service-tag{display:inline-block;background:var(--sage-pale);color:var(--sage);font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:500;}
+.service-card.dark .service-tag{background:rgba(255,255,255,0.18);color:#fff;}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:7px;color:var(--text);}
+.service-card.dark h3{color:#fff;}
+.service-card p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+.service-card.dark p{color:rgba(255,255,255,0.72);}
+
+/* QUIÉNES SOMOS */
+.quienes{padding:80px 40px;scroll-margin-top:60px;}
+.quienes-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.quienes-left h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1.1;margin-bottom:22px;}
+.quienes-left h2 em{font-style:italic;color:var(--sage);}
+.quienes-left p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:14px;}
+.quienes-left p strong{color:var(--text);font-weight:500;}
+.quienes-right{display:flex;flex-direction:column;gap:14px;}
+.pillar{background:var(--cream-dark);border-radius:16px;padding:20px 22px;border-left:3px solid var(--sage);}
+.pillar h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--sage);margin-bottom:5px;}
+.pillar p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+
+.cta-wrap{padding:0 40px 60px;}
+.cta-banner{background:var(--sage);border-radius:26px;padding:56px 40px;text-align:center;}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#fff;margin-bottom:12px;}
+.cta-banner h2 em{font-style:italic;color:var(--sage-pale);}
+.cta-banner p{font-size:15px;color:rgba(255,255,255,0.72);margin-bottom:30px;font-weight:300;}
+.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.btn-white{background:#fff;color:var(--sage);padding:14px 32px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
+.btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);padding:13px 26px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
+
+footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);padding:36px 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);font-weight:400;}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;}
+.footer-links a:hover{color:var(--sage);}
+.footer-copy{font-size:12px;color:var(--muted);width:100%;text-align:center;}
+
+@media(max-width:640px){
+  nav{padding:14px 20px;}
+  .steps{padding:60px 20px;}
+  .steps-grid{grid-template-columns:1fr;}
+  .servicios,.quienes{padding:60px 20px;}
+  .quienes-inner{grid-template-columns:1fr;}
+  .cta-wrap{padding:0 20px 40px;}
+}
+</style>
+
+<div class="ticker"><div class="ticker-inner" id="ticker"></div></div>
+
+<nav>
+  <a href="#" class="nav-brand">vida plena</a>
+  <div class="nav-links">
+    <div class="nav-item" id="nav-servicios">
+      <button class="nav-link" onclick="goToServicios()">
+        <span>Servicios</span><span class="chevron">▾</span>
+      </button>
+      <div class="dropdown">
+        <a href="#servicios" onclick="closeDropdowns()">Sesiones 1:1</a>
+        <a href="#servicios" onclick="closeDropdowns()">Entrenamiento en habilidades DBT</a>
+        <a href="#servicios" onclick="closeDropdowns()">Talleres</a>
+        <a href="#servicios" onclick="closeDropdowns()">Psiquiatría</a>
       </div>
     </div>
-
-    <div class="hero-tag">GRUPOS DE HASTA 10 PERSONAS</div>
-
-    <h1>Herramientas reales para <em>momentos difíciles</em></h1>
-
-    <p class="hero-desc">Talleres y asesorías de psicología basadas en DBT. Sin jerga clínica, sin juicios. Solo habilidades que funcionan, en un grupo pequeño y contenido.</p>
-
-    <div class="hero-btns">
-      <a class="btn-primary" href="https://calendly.com/vidaplenapsic/45min" target="_blank">
-        📅 Agendar una sesión
-      </a>
-      <a class="btn-wa" href="https://wa.me/5491127655429" target="_blank">
-        💬 Escribinos
-      </a>
+    <div class="nav-item" id="nav-recursos">
+      <button class="nav-link" onclick="toggleNav('nav-recursos')"><span>Recursos</span><span class="chevron">▾</span></button>
+      <div class="dropdown"><a href="#">PDFs gratuitos — próximamente</a></div>
     </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section class="services" id="servicios">
-    <div class="section-label">LO QUE OFRECEMOS</div>
-    <h2 class="section-title">Encontrá el espacio que necesitás</h2>
-    <p class="section-desc">Cada modalidad está pensada para acompañarte de una forma distinta, con la misma calidez y foco en herramientas concretas.</p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>Sesiones individuales</h3>
-        <p>Acompañamiento personalizado para trabajar a tu ritmo con herramientas DBT.</p>
-        <span class="card-tag">45 MIN · ONLINE</span>
-        <a class="card-link" href="https://calendly.com/vidaplenapsic/45min" target="_blank">Reservar turno →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">👥</div>
-        <h3>Talleres grupales</h3>
-        <p>Grupos de hasta 10 personas. Aprendés junto a otros en un espacio seguro y sin juicios.</p>
-        <span class="card-tag">PRÓXIMAS FECHAS</span>
-        <a class="card-link" href="https://wa.me/5491127655429" target="_blank">Consultar →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">📚</div>
-        <h3>Cursos y asesorías</h3>
-        <p>Formatos intensivos para profundizar en habilidades: mindfulness, regulación emocional y más.</p>
-        <span class="card-tag">ONLINE</span>
-        <a class="card-link" href="https://wa.me/5491127655429" target="_blank">Consultar →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">🎁</div>
-        <h3>Guía gratuita DBT</h3>
-        <p>5 habilidades para momentos de crisis. Descargala gratis por WhatsApp.</p>
-        <span class="card-tag">GRATIS</span>
-        <a class="card-link" href="https://wa.me/5491127655429?text=GUÍA" target="_blank">Descargar →</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- POR QUÉ -->
-  <section class="why" id="nosotros">
-    <div class="section-label">POR QUÉ VIDA PLENA</div>
-    <h2 class="section-title">Un enfoque humano, sin tecnicismos</h2>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <p>Grupos pequeños de hasta 10 personas para una atención real y personalizada</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <p>Herramientas concretas basadas en evidencia científica (metodología DBT)</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <p>Lenguaje inclusivo, cálido y sin juicios — sin jerga clínica ni diagnósticos</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">04</div>
-        <p>CABA y Zona Norte · Presencial y online · Cuotas disponibles</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="testimonials-section">
-    <div class="section-label">EXPERIENCIAS</div>
-    <h2 class="section-title">Lo que dicen quienes ya pasaron por acá</h2>
-    <div class="testimonials">
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"Aprendí más en el taller grupal que en años de buscar información sola. Las técnicas son muy concretas y aplicables."</p>
-        <div class="testimonial-author">M. L. · Palermo</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"El grupo pequeño hace toda la diferencia. Me sentí contenida desde el primer día, sin sentirme juzgada."</p>
-        <div class="testimonial-author">V. R. · San Isidro</div>
-      </div>
-      <div class="testimonial">
-        <div class="stars">★★★★★</div>
-        <p>"Por fin encontré un espacio donde hablan de emociones sin tecnicismos. Muy recomendable."</p>
-        <div class="testimonial-author">C. M. · Vicente López</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta">
-    <div class="section-label" style="text-align:center;">PRÓXIMO TALLER</div>
-    <h2 class="section-title">Quedan <em style="font-style:italic; color:var(--vp-main); font-family:'Cormorant Garamond',serif;">4 lugares</em> disponibles</h2>
-    <p class="cta-desc">No esperés a estar en crisis para aprender herramientas. Empezá antes.</p>
-    <div class="cta-btns">
-      <a class="btn-primary" href="https://calendly.com/vidaplenapsic/45min" target="_blank">
-        📅 Agendar sesión individual
-      </a>
-      <a class="btn-wa" href="https://wa.me/5491127655429" target="_blank">
-        💬 Consultar por talleres
-      </a>
-    </div>
-  </section>
-
-  <!-- STRIP -->
-  <div class="contact-strip">
-    <span>📍 CABA y Zona Norte GBA</span>
-    <span>💻 También online</span>
-    <span>💳 Cuotas disponibles</span>
-    <span>⏱ Sesiones de 45 min</span>
+    <a href="#quienes" class="nav-link"><span>Quiénes somos</span></a>
+    <a href="https://calendly.com/vidaplenapsic/45min" target="_blank" class="nav-btn">Reservar turno</a>
   </div>
+</nav>
 
-  <!-- FOOTER -->
-  <footer>
-    <svg width="32" height="32" viewBox="0 0 52 52" fill="none" style="display:block; margin:0 auto 10px;">
-      <ellipse cx="20" cy="26" rx="14" ry="20" fill="#5DCAA5" opacity="0.6"/>
-      <ellipse cx="32" cy="26" rx="14" ry="20" fill="#9FE1CB" opacity="0.5"/>
-      <ellipse cx="26" cy="26" rx="5" ry="7" fill="#fff" opacity="0.4"/>
-    </svg>
-    <span class="brand">vida plena</span> · Psicología · Talleres DBT · CABA y Zona Norte<br><br>
-    <a href="https://wa.me/5491127655429" target="_blank">WhatsApp</a> &nbsp;·&nbsp;
-    <a href="https://calendly.com/vidaplenapsic/45min" target="_blank">Agendar sesión</a> &nbsp;·&nbsp;
-    <a href="https://linktr.ee/vidaplena.psic" target="_blank">Linktree</a><br><br>
-    <span style="color:rgba(255,255,255,0.25); font-size:11px;">© 2025 · Hecho con intención</span>
-  </footer>
+<!-- PASOS -->
+<section class="steps">
+  <h2 class="sec-title">Pasos para <em>comenzar</em></h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
+          <ellipse cx="40" cy="52" rx="22" ry="14" fill="rgba(255,255,255,0.12)"/>
+          <ellipse cx="40" cy="38" rx="16" ry="20" fill="rgba(255,255,255,0.18)"/>
+          <ellipse cx="40" cy="30" rx="10" ry="12" fill="rgba(255,255,255,0.28)"/>
+          <ellipse cx="40" cy="24" rx="6" ry="7" fill="rgba(255,255,255,0.38)"/>
+        </svg>
+        <div class="step-title">Completá el formulario</div>
+        <div class="step-desc">Nos permitirá conocer tus necesidades para hacer match con tu terapeuta.</div>
+      </div>
+      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+    </div>
+    <div class="step-card">
+      <div>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="44" r="18" fill="rgba(255,255,255,0.12)"/>
+          <circle cx="30" cy="34" r="12" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="50" cy="32" r="10" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="40" cy="26" r="8" fill="rgba(255,255,255,0.32)"/>
+          <circle cx="40" cy="26" r="4" fill="rgba(255,255,255,0.45)"/>
+        </svg>
+        <div class="step-title">Reservá tu turno</div>
+        <div class="step-desc">Nos comunicaremos con vos para agendar una sesión en el horario que te convenga.</div>
+      </div>
+      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+    </div>
+    <div class="step-card">
+      <div>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
+          <ellipse cx="40" cy="54" rx="20" ry="10" fill="rgba(255,255,255,0.1)"/>
+          <ellipse cx="30" cy="42" rx="12" ry="16" fill="rgba(255,255,255,0.18)"/>
+          <ellipse cx="52" cy="40" rx="10" ry="14" fill="rgba(255,255,255,0.18)"/>
+          <ellipse cx="40" cy="30" rx="9" ry="11" fill="rgba(255,255,255,0.3)"/>
+          <ellipse cx="40" cy="24" rx="5" ry="6" fill="rgba(255,255,255,0.42)"/>
+        </svg>
+        <div class="step-title">Primera sesión</div>
+        <div class="step-desc">Asistí a tu primera sesión y empezá tu proceso terapéutico.</div>
+      </div>
+      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+    </div>
+  </div>
+</section>
 
-</body>
-</html>
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="servicios-inner">
+    <h2 class="page-title"><em>Servicios</em></h2>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🧠</div><span class="service-tag">ONLINE · PRESENCIAL</span><h3>Sesiones 1:1</h3><p>Acompañamiento individual con herramientas basadas en evidencia.</p></div>
+      <div class="service-card dark"><div class="service-icon">📋</div><span class="service-tag">GRUPOS PEQUEÑOS</span><h3>Entrenamiento DBT</h3><p>Habilidades concretas para la regulación emocional y el manejo del malestar.</p></div>
+      <div class="service-card"><div class="service-icon">👥</div><span class="service-tag">TALLERES</span><h3>Talleres grupales</h3><p>Espacios de aprendizaje y conexión en grupos de hasta 10 personas.</p></div>
+      <div class="service-card"><div class="service-icon">💊</div><span class="service-tag">ESPECIALIZADO</span><h3>Psiquiatría</h3><p>Evaluación y acompañamiento psiquiátrico integrado al enfoque terapéutico.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="quienes" id="quienes">
+  <div class="quienes-inner">
+    <div class="quienes-left">
+      <h2><em>Quienes somos</em></h2>
+      <p>Somos un equipo interdisciplinario de psicoterapeutas y psiquiatras con especialización en <strong>DBT, ACT</strong> y abordajes basados en Trauma (<strong>DBT-PTSD, EMDR</strong>). Trabajamos de forma online y presencial en Buenos Aires, Argentina, acompañando a personas que quieren construir una vida que valga la pena ser vivida.</p>
+      <p>Nuestro enfoque está basado en evidencia científica y en dos pilares que creemos inseparables: <strong>la validación de lo que sos y lo que viviste</strong>, y el cambio hacia lo que todavía podés ser.</p>
+    </div>
+    <div class="quienes-right">
+      <div class="pillar"><h4>Validación</h4><p>Lo que viviste importa. No minimizamos, no apuramos. Primero, te escuchamos.</p></div>
+      <div class="pillar"><h4>Evidencia científica</h4><p>Trabajamos con modelos de terapia basados en evidencia científica.</p></div>
+      <div class="pillar"><h4>Equipo interdisciplinario</h4><p>Psicoterapeutas y psiquiatras trabajando juntos por tu bienestar integral.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap" style="margin-top:60px;">
+  <div class="cta-banner">
+    <h2>¿Lista para <em>empezar</em>?</h2>
+    <p>Completá el formulario o escribinos. Damos el primer paso juntas.</p>
+    <div class="cta-btns">
+      <a class="btn-white" href="https://calendly.com/vidaplenapsic/45min" target="_blank">Reservar turno</a>
+      <a class="btn-outline-white" href="https://wa.me/5491127655429" target="_blank">Escribinos por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">vida plena · psicología</div>
+  <div class="footer-links">
+    <a href="https://calendly.com/vidaplenapsic/45min" target="_blank">Agendar turno</a>
+    <a href="https://wa.me/5491127655429" target="_blank">WhatsApp</a>
+    <a href="https://tr.ee/redE9BJb2j" target="_blank">Links</a>
+  </div>
+  <div class="footer-copy">© 2025 Vida Plena · Terapias Contextuales · Buenos Aires, Argentina</div>
+</footer>
+
+<script>
+const frases=["No estás exagerando. Nunca estuviste exagerando.","No tenés que entender todo el dolor para empezar a sanar.","Lo que aprendiste para sobrevivir ya hizo su trabajo. Ahora podés aprender algo nuevo.","Merecés ayuda no porque lo hayas ganado. Sino porque sos humana.","Nadie que lleva tanto debería cargarlo solo.","No tenés que ganarte el descanso. El descanso también es parte del camino.","Hay una diferencia entre rendirse y soltar. Una te aleja de vos. La otra te acerca.","No todo lo que sentís es una verdad sobre quién sos.","A veces pedir ayuda es el acto más valiente que existe.","No tenés que tener todo resuelto para merecer apoyo.","Lo que viviste importa. Y también importa lo que todavía podés construir.","No sos tus peores días. Sos todo lo que hacés con ellos.","Sanar no es volver a ser quien eras. Es conocerte de una manera nueva.","Que algo sea difícil no significa que estés haciéndolo mal.","A veces el cambio no se siente como alivio. Se siente como miedo a lo desconocido."];
+const ticker=document.getElementById('ticker');
+frases.forEach((f,i)=>{const el=document.createElement('div');el.className='ticker-phrase'+(i===0?' active':'');el.textContent=f;ticker.appendChild(el);});
+let current=0;
+setInterval(()=>{const p=document.querySelectorAll('.ticker-phrase');p[current].classList.remove('active');current=(current+1)%p.length;p[current].classList.add('active');},6000);
+
+function goToServicios(){
+  const item=document.getElementById('nav-servicios');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen){
+    item.classList.add('open');
+    document.getElementById('servicios').scrollIntoView({behavior:'smooth'});
+  }
+}
+function closeDropdowns(){
+  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
+}
+function toggleNav(id){
+  const item=document.getElementById(id);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.nav-item'))document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
+});
+</script>
