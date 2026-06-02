@@ -1,108 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vida Plena · Psicología · Terapias Contextuales · Buenos Aires</title>
+  <meta name="description" content="Sesiones, talleres y acompañamiento basado en DBT, ACT y abordajes de Trauma. Online y presencial en Buenos Aires."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--sage:#4A6741;--sage-light:#7A9E6E;--sage-pale:#C8D9BF;--cream:#F5F0E8;--cream-dark:#EDE6D6;--text:#2A2A22;--muted:#666658;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{--sage:#4A6741;--sage-light:#7A9E6E;--sage-pale:#C8D9BF;--cream:#F5F0E8;--cream-dark:#EDE6D6;--text:#2A2A22;--muted:#666658;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
+    /* TICKER */
+    .ticker{background:var(--sage);overflow:hidden;height:56px;display:flex;align-items:center;}
+    .ticker-inner{display:flex;align-items:center;width:100%;justify-content:center;position:relative;height:100%;}
+    .ticker-phrase{position:absolute;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:400;color:#fff;padding:0 60px;opacity:0;transition:opacity 0.7s ease;text-shadow:0 0 18px rgba(255,255,255,0.55),0 1px 3px rgba(0,0,0,0.15);}
+    .ticker-phrase.active{opacity:1;}
 
-.ticker{background:var(--sage);overflow:hidden;height:56px;display:flex;align-items:center;}
-.ticker-inner{display:flex;align-items:center;width:100%;justify-content:center;position:relative;height:100%;}
-.ticker-phrase{position:absolute;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:400;color:#fff;padding:0 60px;opacity:0;transition:opacity 0.7s ease;text-shadow:0 0 18px rgba(255,255,255,0.55),0 1px 3px rgba(0,0,0,0.15);}
-.ticker-phrase.active{opacity:1;}
+    /* NAV */
+    nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--cream);border-bottom:1px solid rgba(74,103,65,0.12);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);}
+    .nav-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--sage);letter-spacing:0.5px;text-decoration:none;}
+    .nav-links{display:flex;gap:8px;align-items:center;}
+    .nav-item{position:relative;}
+    .nav-link{font-size:13px;color:var(--text);text-decoration:none;font-weight:400;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,color .15s;background:transparent;border:none;font-family:'DM Sans',sans-serif;}
+    .nav-link:hover{background:var(--cream-dark);color:var(--sage);}
+    .chevron{font-size:10px;transition:transform .2s;}
+    .nav-item.open .chevron{transform:rotate(180deg);}
+    .dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid rgba(74,103,65,0.15);border-radius:14px;padding:8px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,0.08);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;}
+    .nav-item.open .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-radius:8px;transition:background .15s;}
+    .dropdown a:hover{background:var(--cream-dark);color:var(--sage);}
+    .nav-btn{background:var(--sage);color:#fff;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+    .nav-btn:hover{background:#3a5232;}
 
-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--cream);border-bottom:1px solid rgba(74,103,65,0.12);position:sticky;top:0;z-index:100;}
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--sage);letter-spacing:0.5px;text-decoration:none;}
-.nav-links{display:flex;gap:8px;align-items:center;}
-.nav-item{position:relative;}
-.nav-link{font-size:13px;color:var(--text);text-decoration:none;font-weight:400;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,color .15s;background:transparent;border:none;font-family:'DM Sans',sans-serif;}
-.nav-link:hover{background:var(--cream-dark);color:var(--sage);}
-.nav-link .chevron{font-size:10px;transition:transform .2s;}
-.nav-item.open .chevron{transform:rotate(180deg);}
-.dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid rgba(74,103,65,0.15);border-radius:14px;padding:8px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,0.08);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;}
-.nav-item.open .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.dropdown a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-radius:8px;font-weight:400;transition:background .15s;}
-.dropdown a:hover{background:var(--cream-dark);color:var(--sage);}
-.nav-btn{background:var(--sage);color:#fff;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background .2s;white-space:nowrap;}
-.nav-btn:hover{background:#3a5232;}
+    /* STEPS */
+    .steps{padding:72px 40px;max-width:900px;margin:0 auto;}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
+    .sec-title em{font-style:italic;color:var(--sage);}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .step-card{background:var(--sage);border-radius:22px;padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;transition:transform .2s;}
+    .step-card:hover{transform:translateY(-4px);}
+    .step-icon{width:80px;height:80px;margin-bottom:20px;}
+    .step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.2;}
+    .step-desc{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.55;font-weight:300;}
+    .step-footer{display:flex;justify-content:flex-end;margin-top:20px;}
+    .step-num-badge{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#fff;}
 
-/* STEPS */
-.steps{padding:72px 40px;max-width:900px;margin:0 auto;}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
-.sec-title em{font-style:italic;color:var(--sage);}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.step-card{background:var(--sage);border-radius:22px;padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;transition:transform .2s;cursor:pointer;}
-.step-card:hover{transform:translateY(-4px);}
-.step-icon{width:80px;height:80px;margin-bottom:20px;}
-.step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.2;}
-.step-desc{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.55;font-weight:300;}
-.step-footer{display:flex;justify-content:flex-end;margin-top:20px;}
-.step-arrow{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;transition:background .2s;}
-.step-card:hover .step-arrow{background:rgba(255,255,255,0.28);}
+    /* SERVICIOS - BOOK */
+    .servicios{background:var(--cream-dark);padding:80px 40px;scroll-margin-top:60px;}
+    .servicios-inner{max-width:860px;margin:0 auto;}
+    .page-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:52px;}
+    .page-title em{font-style:italic;color:var(--sage);}
+    .book-container{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px;}
+    .book{width:620px;height:380px;position:relative;perspective:2000px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.18));}
+    .book-spine{position:absolute;left:0;top:0;bottom:0;width:30px;background:linear-gradient(to right,#1e3318,#2d4a26 60%,#3a5232);border-radius:6px 0 0 6px;z-index:10;box-shadow:inset -4px 0 10px rgba(0,0,0,0.3);}
+    .book-spine::after{content:'vida plena';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);font-weight:300;}
+    .book-pages-base{position:absolute;left:30px;right:0;top:4px;bottom:4px;background:#e8e0d0;border-radius:0 8px 8px 0;}
+    .book-pages-base::before{content:'';position:absolute;left:2px;right:-2px;top:2px;bottom:-2px;background:#ddd5c5;border-radius:0 8px 8px 0;z-index:-1;}
+    .book-pages-base::after{content:'';position:absolute;left:4px;right:-4px;top:4px;bottom:-4px;background:#d0c8b8;border-radius:0 8px 8px 0;z-index:-2;}
+    .page-back{position:absolute;left:30px;right:0;top:0;bottom:0;background:#faf7f0;border-radius:0 10px 10px 0;padding:40px 44px 40px 40px;display:flex;flex-direction:column;justify-content:center;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.07) 27px,rgba(74,103,65,0.07) 28px);background-position:0 40px;}
+    .page-flip{position:absolute;left:30px;right:0;top:0;bottom:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 0.75s cubic-bezier(0.645,0.045,0.355,1.000);z-index:5;}
+    .page-flip.turning{transform:rotateY(-180deg);}
+    .page-front,.page-back-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0 10px 10px 0;padding:40px 44px 40px 40px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
+    .page-front{background:#faf7f0;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.07) 27px,rgba(74,103,65,0.07) 28px);background-position:0 40px;box-shadow:inset -8px 0 20px rgba(0,0,0,0.04);}
+    .page-back-face{background:#f0ebe0;transform:rotateY(180deg);background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.05) 27px,rgba(74,103,65,0.05) 28px);background-position:0 40px;}
+    .page-front::after{content:'';position:absolute;right:0;top:0;bottom:0;width:0;background:linear-gradient(to left,rgba(0,0,0,0.15),transparent);transition:width 0.75s ease;pointer-events:none;}
+    .page-flip.turning .page-front::after{width:60%;}
+    .p-tag{font-size:10px;letter-spacing:2.5px;color:var(--sage);font-weight:500;margin-bottom:16px;}
+    .p-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.15;}
+    .p-title em{font-style:italic;color:var(--sage);}
+    .p-desc{font-size:14px;color:var(--muted);line-height:1.85;font-weight:300;max-width:340px;}
+    .p-badge{display:inline-block;background:var(--sage-pale);color:var(--sage);font-size:10px;padding:5px 14px;border-radius:20px;margin-top:20px;font-weight:500;letter-spacing:0.5px;}
+    .p-corner{position:absolute;bottom:0;right:0;width:0;height:0;border-left:24px solid transparent;border-bottom:24px solid rgba(74,103,65,0.12);}
+    .book-nav{display:flex;align-items:center;gap:16px;}
+    .book-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(74,103,65,0.3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--sage);transition:background .2s,border-color .2s;}
+    .book-arrow:hover{background:var(--sage);color:#fff;border-color:var(--sage);}
+    .book-arrow:disabled{opacity:0.25;cursor:default;}
+    .book-arrow:disabled:hover{background:transparent;color:var(--sage);border-color:rgba(74,103,65,0.3);}
+    .book-page-count{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--muted);min-width:60px;text-align:center;}
+    .flip-hint{position:absolute;right:16px;bottom:16px;font-size:11px;color:rgba(74,103,65,0.45);display:flex;align-items:center;gap:4px;pointer-events:none;}
 
-/* SERVICIOS */
-.servicios{background:var(--cream-dark);padding:80px 40px;scroll-margin-top:60px;}
-.servicios-inner{max-width:860px;margin:0 auto;}
-.page-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
-.page-title em{font-style:italic;color:var(--sage);}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;}
-.service-card{background:var(--cream);border-radius:20px;padding:28px 22px;transition:transform .2s;}
-.service-card:hover{transform:translateY(-3px);}
-.service-card.dark{background:var(--sage);}
-.service-icon{font-size:26px;margin-bottom:12px;}
-.service-tag{display:inline-block;background:var(--sage-pale);color:var(--sage);font-size:10px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:500;}
-.service-card.dark .service-tag{background:rgba(255,255,255,0.18);color:#fff;}
-.service-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:7px;color:var(--text);}
-.service-card.dark h3{color:#fff;}
-.service-card p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
-.service-card.dark p{color:rgba(255,255,255,0.72);}
+    /* QUIÉNES */
+    .quienes{padding:80px 40px;scroll-margin-top:60px;}
+    .quienes-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+    .quienes-left h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1.1;margin-bottom:22px;}
+    .quienes-left h2 em{font-style:italic;color:var(--sage);}
+    .quienes-left p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:14px;}
+    .quienes-left p strong{color:var(--text);font-weight:500;}
+    .quienes-right{display:flex;flex-direction:column;gap:14px;}
+    .pillar{background:var(--cream-dark);border-radius:16px;padding:20px 22px;border-left:3px solid var(--sage);}
+    .pillar h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--sage);margin-bottom:5px;}
+    .pillar p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
 
-/* QUIÉNES SOMOS */
-.quienes{padding:80px 40px;scroll-margin-top:60px;}
-.quienes-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-.quienes-left h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1.1;margin-bottom:22px;}
-.quienes-left h2 em{font-style:italic;color:var(--sage);}
-.quienes-left p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:14px;}
-.quienes-left p strong{color:var(--text);font-weight:500;}
-.quienes-right{display:flex;flex-direction:column;gap:14px;}
-.pillar{background:var(--cream-dark);border-radius:16px;padding:20px 22px;border-left:3px solid var(--sage);}
-.pillar h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--sage);margin-bottom:5px;}
-.pillar p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+    /* CTA */
+    .cta-wrap{padding:0 40px 60px;}
+    .cta-banner{background:var(--sage);border-radius:26px;padding:56px 40px;text-align:center;}
+    .cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#fff;margin-bottom:12px;}
+    .cta-banner h2 em{font-style:italic;color:var(--sage-pale);}
+    .cta-banner p{font-size:15px;color:rgba(255,255,255,0.72);margin-bottom:32px;font-weight:300;}
+    .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+    .btn-white{background:#fff;color:var(--sage);padding:14px 36px;border-radius:50px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
+    .btn-white:hover{opacity:0.9;}
+    .btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5);padding:14px 28px;border-radius:50px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+    .btn-outline-white:hover{background:rgba(255,255,255,0.1);}
 
-.cta-wrap{padding:0 40px 60px;}
-.cta-banner{background:var(--sage);border-radius:26px;padding:56px 40px;text-align:center;}
-.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#fff;margin-bottom:12px;}
-.cta-banner h2 em{font-style:italic;color:var(--sage-pale);}
-.cta-banner p{font-size:15px;color:rgba(255,255,255,0.72);margin-bottom:30px;font-weight:300;}
-.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-.btn-white{background:#fff;color:var(--sage);padding:14px 32px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
-.btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.45);padding:13px 26px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
+    /* FOOTER */
+    footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);padding:36px 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;}
+    .footer-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);font-weight:400;}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none;}
+    .footer-links a:hover{color:var(--sage);}
+    .footer-copy{font-size:12px;color:var(--muted);width:100%;text-align:center;margin-top:8px;}
 
-footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);padding:36px 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;}
-.footer-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);font-weight:400;}
-.footer-links{display:flex;gap:18px;flex-wrap:wrap;}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none;}
-.footer-links a:hover{color:var(--sage);}
-.footer-copy{font-size:12px;color:var(--muted);width:100%;text-align:center;}
+    /* MOBILE */
+    @media(max-width:680px){
+      nav{padding:14px 20px;}
+      .nav-links .nav-link span:not(.chevron){display:none;}
+      .steps{padding:60px 20px;}
+      .steps-grid{grid-template-columns:1fr;}
+      .servicios,.quienes{padding:60px 20px;}
+      .book{width:calc(100vw - 80px);height:300px;}
+      .quienes-inner{grid-template-columns:1fr;}
+      .cta-wrap{padding:0 20px 40px;}
+      footer{padding:30px 20px;}
+    }
+  </style>
+</head>
+<body>
 
-@media(max-width:640px){
-  nav{padding:14px 20px;}
-  .steps{padding:60px 20px;}
-  .steps-grid{grid-template-columns:1fr;}
-  .servicios,.quienes{padding:60px 20px;}
-  .quienes-inner{grid-template-columns:1fr;}
-  .cta-wrap{padding:0 20px 40px;}
-}
-</style>
-
+<!-- TICKER -->
 <div class="ticker"><div class="ticker-inner" id="ticker"></div></div>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">vida plena</a>
   <div class="nav-links">
     <div class="nav-item" id="nav-servicios">
-      <button class="nav-link" onclick="goToServicios()">
-        <span>Servicios</span><span class="chevron">▾</span>
-      </button>
+      <button class="nav-link" onclick="goToServicios()"><span>Servicios</span><span class="chevron">▾</span></button>
       <div class="dropdown">
         <a href="#servicios" onclick="closeDropdowns()">Sesiones 1:1</a>
         <a href="#servicios" onclick="closeDropdowns()">Entrenamiento en habilidades DBT</a>
@@ -115,7 +152,7 @@ footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);pa
       <div class="dropdown"><a href="#">PDFs gratuitos — próximamente</a></div>
     </div>
     <a href="#quienes" class="nav-link"><span>Quiénes somos</span></a>
-    <a href="https://calendly.com/vidaplenapsic/45min" target="_blank" class="nav-btn">Reservar turno</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank" class="nav-btn">Reservar turno</a>
   </div>
 </nav>
 
@@ -125,44 +162,27 @@ footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);pa
   <div class="steps-grid">
     <div class="step-card">
       <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
-          <ellipse cx="40" cy="52" rx="22" ry="14" fill="rgba(255,255,255,0.12)"/>
-          <ellipse cx="40" cy="38" rx="16" ry="20" fill="rgba(255,255,255,0.18)"/>
-          <ellipse cx="40" cy="30" rx="10" ry="12" fill="rgba(255,255,255,0.28)"/>
-          <ellipse cx="40" cy="24" rx="6" ry="7" fill="rgba(255,255,255,0.38)"/>
-        </svg>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="52" rx="22" ry="14" fill="rgba(255,255,255,0.12)"/><ellipse cx="40" cy="38" rx="16" ry="20" fill="rgba(255,255,255,0.18)"/><ellipse cx="40" cy="30" rx="10" ry="12" fill="rgba(255,255,255,0.28)"/><ellipse cx="40" cy="24" rx="6" ry="7" fill="rgba(255,255,255,0.38)"/></svg>
         <div class="step-title">Completá el formulario</div>
         <div class="step-desc">Nos permitirá conocer tus necesidades para hacer match con tu terapeuta.</div>
       </div>
-      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+      <div class="step-footer"><div class="step-num-badge">1</div></div>
     </div>
     <div class="step-card">
       <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
-          <circle cx="40" cy="44" r="18" fill="rgba(255,255,255,0.12)"/>
-          <circle cx="30" cy="34" r="12" fill="rgba(255,255,255,0.2)"/>
-          <circle cx="50" cy="32" r="10" fill="rgba(255,255,255,0.2)"/>
-          <circle cx="40" cy="26" r="8" fill="rgba(255,255,255,0.32)"/>
-          <circle cx="40" cy="26" r="4" fill="rgba(255,255,255,0.45)"/>
-        </svg>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="44" r="18" fill="rgba(255,255,255,0.12)"/><circle cx="30" cy="34" r="12" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="32" r="10" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="26" r="8" fill="rgba(255,255,255,0.32)"/><circle cx="40" cy="26" r="4" fill="rgba(255,255,255,0.45)"/></svg>
         <div class="step-title">Reservá tu turno</div>
         <div class="step-desc">Nos comunicaremos con vos para agendar una sesión en el horario que te convenga.</div>
       </div>
-      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+      <div class="step-footer"><div class="step-num-badge">2</div></div>
     </div>
     <div class="step-card">
       <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none">
-          <ellipse cx="40" cy="54" rx="20" ry="10" fill="rgba(255,255,255,0.1)"/>
-          <ellipse cx="30" cy="42" rx="12" ry="16" fill="rgba(255,255,255,0.18)"/>
-          <ellipse cx="52" cy="40" rx="10" ry="14" fill="rgba(255,255,255,0.18)"/>
-          <ellipse cx="40" cy="30" rx="9" ry="11" fill="rgba(255,255,255,0.3)"/>
-          <ellipse cx="40" cy="24" rx="5" ry="6" fill="rgba(255,255,255,0.42)"/>
-        </svg>
+        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="54" rx="20" ry="10" fill="rgba(255,255,255,0.1)"/><ellipse cx="30" cy="42" rx="12" ry="16" fill="rgba(255,255,255,0.18)"/><ellipse cx="52" cy="40" rx="10" ry="14" fill="rgba(255,255,255,0.18)"/><ellipse cx="40" cy="30" rx="9" ry="11" fill="rgba(255,255,255,0.3)"/><ellipse cx="40" cy="24" rx="5" ry="6" fill="rgba(255,255,255,0.42)"/></svg>
         <div class="step-title">Primera sesión</div>
         <div class="step-desc">Asistí a tu primera sesión y empezá tu proceso terapéutico.</div>
       </div>
-      <div class="step-footer"><div class="step-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div></div>
+      <div class="step-footer"><div class="step-num-badge">3</div></div>
     </div>
   </div>
 </section>
@@ -171,11 +191,24 @@ footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);pa
 <section class="servicios" id="servicios">
   <div class="servicios-inner">
     <h2 class="page-title"><em>Servicios</em></h2>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon">🧠</div><span class="service-tag">ONLINE · PRESENCIAL</span><h3>Sesiones 1:1</h3><p>Acompañamiento individual con herramientas basadas en evidencia.</p></div>
-      <div class="service-card dark"><div class="service-icon">📋</div><span class="service-tag">GRUPOS PEQUEÑOS</span><h3>Entrenamiento DBT</h3><p>Habilidades concretas para la regulación emocional y el manejo del malestar.</p></div>
-      <div class="service-card"><div class="service-icon">👥</div><span class="service-tag">TALLERES</span><h3>Talleres grupales</h3><p>Espacios de aprendizaje y conexión en grupos de hasta 10 personas.</p></div>
-      <div class="service-card"><div class="service-icon">💊</div><span class="service-tag">ESPECIALIZADO</span><h3>Psiquiatría</h3><p>Evaluación y acompañamiento psiquiátrico integrado al enfoque terapéutico.</p></div>
+    <div class="book-container">
+      <div class="book" id="book">
+        <div class="book-spine"></div>
+        <div class="book-pages-base"></div>
+        <div class="page-back" id="page-back"></div>
+        <div class="page-flip" id="page-flip">
+          <div class="page-front" id="page-front"></div>
+          <div class="page-back-face">
+            <div style="opacity:0.12;font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--sage);font-weight:300;font-style:italic;">vp</div>
+          </div>
+        </div>
+        <div class="flip-hint" id="flip-hint">click para pasar →</div>
+      </div>
+      <div class="book-nav">
+        <button class="book-arrow" id="btn-prev" onclick="goBack()" disabled>←</button>
+        <div class="book-page-count" id="page-count">1 / 4</div>
+        <button class="book-arrow" id="btn-next" onclick="goNext()">→</button>
+      </div>
     </div>
   </div>
 </section>
@@ -196,21 +229,23 @@ footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);pa
   </div>
 </section>
 
+<!-- CTA -->
 <div class="cta-wrap" style="margin-top:60px;">
   <div class="cta-banner">
-    <h2>¿Lista para <em>empezar</em>?</h2>
-    <p>Completá el formulario o escribinos. Damos el primer paso juntas.</p>
+    <h2>¿Listx para <em>empezar</em>?</h2>
+    <p>Completá el formulario o escribinos.</p>
     <div class="cta-btns">
-      <a class="btn-white" href="https://calendly.com/vidaplenapsic/45min" target="_blank">Reservar turno</a>
-      <a class="btn-outline-white" href="https://wa.me/5491127655429" target="_blank">Escribinos por WhatsApp</a>
+      <a class="btn-white" href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank">Formulario</a>
+      <a class="btn-outline-white" href="https://wa.me/5491127655429" target="_blank">💬 WhatsApp</a>
     </div>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">vida plena · psicología</div>
   <div class="footer-links">
-    <a href="https://calendly.com/vidaplenapsic/45min" target="_blank">Agendar turno</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank">Formulario</a>
     <a href="https://wa.me/5491127655429" target="_blank">WhatsApp</a>
     <a href="https://tr.ee/redE9BJb2j" target="_blank">Links</a>
   </div>
@@ -218,31 +253,33 @@ footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);pa
 </footer>
 
 <script>
+// TICKER
 const frases=["No estás exagerando. Nunca estuviste exagerando.","No tenés que entender todo el dolor para empezar a sanar.","Lo que aprendiste para sobrevivir ya hizo su trabajo. Ahora podés aprender algo nuevo.","Merecés ayuda no porque lo hayas ganado. Sino porque sos humana.","Nadie que lleva tanto debería cargarlo solo.","No tenés que ganarte el descanso. El descanso también es parte del camino.","Hay una diferencia entre rendirse y soltar. Una te aleja de vos. La otra te acerca.","No todo lo que sentís es una verdad sobre quién sos.","A veces pedir ayuda es el acto más valiente que existe.","No tenés que tener todo resuelto para merecer apoyo.","Lo que viviste importa. Y también importa lo que todavía podés construir.","No sos tus peores días. Sos todo lo que hacés con ellos.","Sanar no es volver a ser quien eras. Es conocerte de una manera nueva.","Que algo sea difícil no significa que estés haciéndolo mal.","A veces el cambio no se siente como alivio. Se siente como miedo a lo desconocido."];
-const ticker=document.getElementById('ticker');
-frases.forEach((f,i)=>{const el=document.createElement('div');el.className='ticker-phrase'+(i===0?' active':'');el.textContent=f;ticker.appendChild(el);});
-let current=0;
-setInterval(()=>{const p=document.querySelectorAll('.ticker-phrase');p[current].classList.remove('active');current=(current+1)%p.length;p[current].classList.add('active');},6000);
+const tkr=document.getElementById('ticker');
+frases.forEach((f,i)=>{const el=document.createElement('div');el.className='ticker-phrase'+(i===0?' active':'');el.textContent=f;tkr.appendChild(el);});
+let tc=0;setInterval(()=>{const p=document.querySelectorAll('.ticker-phrase');p[tc].classList.remove('active');tc=(tc+1)%p.length;p[tc].classList.add('active');},6000);
 
-function goToServicios(){
-  const item=document.getElementById('nav-servicios');
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
-  if(!isOpen){
-    item.classList.add('open');
-    document.getElementById('servicios').scrollIntoView({behavior:'smooth'});
-  }
-}
-function closeDropdowns(){
-  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
-}
-function toggleNav(id){
-  const item=document.getElementById(id);
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.nav-item'))document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));
-});
+// NAV
+function goToServicios(){const item=document.getElementById('nav-servicios');const isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen){item.classList.add('open');document.getElementById('servicios').scrollIntoView({behavior:'smooth'});}}
+function closeDropdowns(){document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));}
+function toggleNav(id){const item=document.getElementById(id);const isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-item'))document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));});
+
+// BOOK
+const pages=[
+  {tag:'SERVICIO 01 · 04',title:'<em>Sesiones</em> 1:1',desc:'50 min de psicoterapia con un terapeuta especializado en terapias basadas en evidencia científica.',badge:'ONLINE · PRESENCIAL'},
+  {tag:'SERVICIO 02 · 04',title:'<em>Entrenamiento</em> DBT',desc:'Aprenderás habilidades de mindfulness, regulación emocional, efectividad interpersonal y tolerancia al malestar en grupos de máximo 10 personas.',badge:'GRUPOS PEQUEÑOS'},
+  {tag:'SERVICIO 03 · 04',title:'<em>Talleres</em>',desc:'Distintas temáticas todos los meses, para explorar herramientas y conexión en un espacio seguro y sin juicios.',badge:'MENSUAL'},
+  {tag:'SERVICIO 04 · 04',title:'<em>Psiquiatría</em>',desc:'Evaluación y acompañamiento psiquiátrico integrado al enfoque terapéutico.',badge:'ESPECIALIZADO'}
+];
+let currentPage=0,isFlipping=false;
+function pageHTML(p){return `<div class="p-tag">${p.tag}</div><div class="p-title">${p.title}</div><div class="p-desc">${p.desc}</div><div class="p-badge">${p.badge}</div><div class="p-corner"></div>`;}
+function renderPage(){document.getElementById('page-front').innerHTML=pageHTML(pages[currentPage]);document.getElementById('page-count').textContent=`${currentPage+1} / ${pages.length}`;document.getElementById('btn-prev').disabled=currentPage===0;document.getElementById('btn-next').disabled=currentPage===pages.length-1;const h=document.getElementById('flip-hint');if(h)h.style.display=currentPage===pages.length-1?'none':'flex';}
+function playPageSound(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const buf=ctx.createBuffer(1,ctx.sampleRate*0.2,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;const env=Math.exp(-t*20)*(1-Math.exp(-t*150));d[i]=(Math.random()*2-1)*env*0.4;}const src=ctx.createBufferSource();src.buffer=buf;const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=2500;f.Q.value=0.6;src.connect(f);f.connect(ctx.destination);src.start();}catch(e){}}
+function goNext(){if(isFlipping||currentPage>=pages.length-1)return;isFlipping=true;playPageSound();document.getElementById('page-back').innerHTML=pageHTML(pages[currentPage+1]);const flip=document.getElementById('page-flip');flip.classList.add('turning');setTimeout(()=>{currentPage++;flip.style.transition='none';flip.classList.remove('turning');renderPage();document.getElementById('page-back').innerHTML='';void flip.offsetHeight;flip.style.transition='';isFlipping=false;},780);}
+function goBack(){if(isFlipping||currentPage<=0)return;isFlipping=true;playPageSound();document.getElementById('page-back').innerHTML=pageHTML(pages[currentPage-1]);const flip=document.getElementById('page-flip');flip.style.transition='none';flip.classList.add('turning');void flip.offsetHeight;flip.style.transition='transform 0.75s cubic-bezier(0.645,0.045,0.355,1.000)';flip.classList.remove('turning');setTimeout(()=>{currentPage--;renderPage();document.getElementById('page-back').innerHTML='';isFlipping=false;},780);}
+document.getElementById('book').addEventListener('click',function(e){if(!e.target.closest('.book-nav'))goNext();});
+renderPage();
 </script>
+</body>
+</html>
